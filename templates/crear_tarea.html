@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Tarea - Gold Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="main-header">
+        <a href="/dashboard" class="brand">
+            <img src="{{ url_for('static', filename='img/logo.jpeg') }}" alt="Logo" class="logo-img">
+            <h2 style="margin:0; color:#d4af37;">Gold Task</h2>
+        </a>
+        <nav class="nav-links">
+            <a href="/dashboard">Mi Panel</a>
+            <a href="/logout" style="color:#e74c3c;">Salir</a>
+        </nav>
+    </header>
+
+    <div class="flex-wrapper">
+        <div class="container" style="width: 450px;">
+            <h1>Crear Nueva Tarea</h1>
+            <form action="/tareas/crear" method="POST">
+                <label>Título de la tarea:</label>
+                <input type="text" name="titulo" placeholder="Ej: Ir al gimnasio" minlength="5" required>
+                
+                <label>Categoría:</label>
+                <select name="categoria_id" required>
+                    <option value="">-- Selecciona una categoría --</option>
+                    {% for cat in categorias %}
+                        <option value="{{ cat.id }}">{{ cat.nombre }}</option>
+                    {% endfor %}
+                </select>
+                
+                <label>Fecha de vencimiento:</label>
+                <input type="date" name="fecha_vencimiento" required>
+                
+                <label>Hora: <small style="color:#aaa;">(opcional)</small></label>
+                <input type="time" name="hora">
+                
+                <label>Ubicación: <small style="color:#aaa;">(opcional)</small></label>
+                <input type="text" name="ubicacion" placeholder="Ej: Parque central">
+                
+                <label>Observaciones: <small style="color:#aaa;">(opcional, máximo 250 caracteres)</small></label>
+                <textarea name="observaciones" placeholder="Detalles adicionales..." maxlength="250"
+                    style="width:100%; padding:10px; background:#2c2c2c; color:white; border:1px solid #333; border-radius:6px; margin-bottom:20px; resize:vertical;"></textarea>
+                
+                <label>Prioridad:</label>
+                <select name="prioridad">
+                    <option value="1">Baja</option>
+                    <option value="2">Media</option>
+                    <option value="3">Alta</option>
+                </select>
+                
+                <button type="submit">Guardar Tarea</button>
+            </form>
+            <p style="text-align:center; margin-top:15px;">
+                <a href="/dashboard" style="color:#666; text-decoration:none; font-size:14px;">← Cancelar y volver</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

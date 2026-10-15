@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Gold Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="main-header">
+        <a href="/" class="brand">
+            <img src="{{ url_for('static', filename='img/logo.jpeg') }}" class="logo-img" alt="Logo">
+            <h2 style="margin:0; color:#d4af37;">Gold Task</h2>
+        </a>
+        <nav class="nav-links">
+            {% if 'usuario_id' in session %}
+                <a href="/dashboard" style="color:#aaa; font-size:14px; margin-right:15px;">Mi Panel</a>
+                <a href="/logout" style="color:#e74c3c;">Salir</a>
+            {% else %}
+                <a href="/login" style="color:#aaa; font-size:14px; margin-right:15px;">Entrar</a>
+                <a href="/registro" style="color:#d4af37;">Registrarse</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <div class="flex-wrapper">
+        <div class="container">
+            <h1>Login</h1>
+            <form action="/login" method="POST">
+                <input type="email" name="email" placeholder="Correo" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <p style="text-align:center; margin-top:15px;">
+                ¿No tienes cuenta? <a href="/registro" style="color:#d4af37;">Regístrate</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

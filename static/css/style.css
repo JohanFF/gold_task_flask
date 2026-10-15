@@ -1,0 +1,186 @@
+*{
+    box-sizing: border-box;
+}
+/* estilos genericos*/
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+/* --- encabezado principal */
+.main-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background: #1a1a1a;
+    border-bottom: 2px solid #d4af37;
+}
+
+/* diseño registro y login */
+.flex-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    width: 100%;
+}
+/* contenedor del manual */
+main {
+    display: block; 
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #d4af37;
+}
+
+.logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #d4af37;
+}
+
+/* aca contenedores de secciones */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.section-card {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+h1, h2 {
+    color: #d4af37;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+
+.container {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    border-top: 4px solid #d4af37;
+    width: 350px;
+}
+
+/* diseño de dashboard y tareas */
+.dashboard-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.task-card {
+    background: #1e1e1e;
+    border-left: 5px solid #d4af37;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    width: 100%;          
+    max-width: 100%;   
+    overflow: hidden;
+}
+
+/* botones e inputs */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #2c2c2c;
+    color: white;
+    box-sizing: border-box;
+}
+
+button, .btn-cta {
+    width: 100%;
+    padding: 12px;
+    background-color: #d4af37;
+    border: none;
+    border-radius: 6px;
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+.task-info {
+    max-width: 70%;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+/* Efecto hover para el botón de la página de inicio */
+.btn-custom-hover {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-custom-hover:hover {
+    background-color: #ffefc0; /* Un tono dorado un poco más claro o brillante */
+    transform: translateY(-2px);
+}
+/* Efecto hover para los enlaces del menú superior */
+.nav-links a {
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff !important; /* Cambia a blanco brillante al pasar el cursor */
+}
+/* Efecto hover para el logo y el texto de la marca */
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #d4af37;
+    transition: opacity 0.3s ease;
+}
+
+.brand h2 {
+    transition: color 0.3s ease;
+}
+
+.brand:hover h2 {
+    color: #ffffff !important; /* El texto Gold Task cambia a blanco brillante al pasar el mouse */
+}
