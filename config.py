@@ -1,11 +1,8 @@
-import pymysql
+import sqlite3
 
 def get_connection():
-    return pymysql.connect(
-        host='localhost',
-        port=3307,          # Puerto actualizado a 3307
-        user='root',
-        password='',
-        database='gold_task_db', # Nombre exacto de tu base de datos
-        cursorclass=pymysql.cursors.DictCursor
-    )
+    # Esto creará un archivo llamado 'gold_task.db' automáticamente en la carpeta de tu proyecto
+    connection = sqlite3.connect('gold_task.db')
+    # Permite acceder a las columnas por nombre (como diccionarios, igual que fetchone() de pymysql)
+    connection.row_factory = sqlite3.Row
+    return connection
