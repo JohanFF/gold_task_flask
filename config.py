@@ -1,8 +1,11 @@
+import os
 import sqlite3
 
 def get_connection():
-    # Esto creará un archivo llamado 'gold_task.db' automáticamente en la carpeta de tu proyecto
-    connection = sqlite3.connect('gold_task.db')
-    # Permite acceder a las columnas por nombre (como diccionarios, igual que fetchone() de pymysql)
+    # Obtiene la ruta absoluta de la carpeta actual del proyecto
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    db_path = os.path.join(base_dir, 'gold_task.db')
+    
+    connection = sqlite3.connect(db_path)
     connection.row_factory = sqlite3.Row
     return connection

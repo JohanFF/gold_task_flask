@@ -184,3 +184,33 @@ button, .btn-cta {
 .brand:hover h2 {
     color: #ffffff !important; /* El texto Gold Task cambia a blanco brillante al pasar el mouse */
 }
+.border-red {
+    border-left: 5px solid #ff4d4d; /* Rojo para Alta */
+}
+.border-yellow {
+    border-left: 5px solid #ffd700; /* Amarillo para Media */
+}
+.border-blue {
+    border-left: 5px solid #00bfff; /* Azul para Baja / Otras */
+}
+/* Ajustes generales para pantallas de celulares */
+@media (max-width: 768px) {
+    /* Barra de navegación adaptable */
+    nav, .navbar {
+        flex-direction: column;
+        padding: 10px 15px;
+        text-align: center;
+    }
+
+    /* Contenedores principales ocupando mejor el ancho */
+    .container, .task-card, .card {
+        width: 95% !important;
+        margin: 10px auto !important;
+        padding: 15px !important;
+    }
+
+    /* Tamaños de títulos adaptados para móviles */
+    h1 {
+        font-size: 24px !important;
+    }
+}
