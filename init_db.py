@@ -44,15 +44,15 @@ def crear_base_datos():
     cursor.execute("SELECT COUNT(*) FROM categorias")
     if cursor.fetchone()[0] == 0:
         categorias_iniciales = [
-    'Deporte', 
-    'Educación', 
-    'Hogar', 
-    'Ocio', 
-    'Otras', 
-    'Salud', 
-    'Social', 
-    'Trabajo'
-    ]   
+            ('Deporte',), 
+            ('Educación',), 
+            ('Hogar',), 
+            ('Ocio',), 
+            ('Otras',), 
+            ('Salud',), 
+            ('Social',), 
+            ('Trabajo',)
+        ]   
         cursor.executemany("INSERT INTO categorias (nombre) VALUES (?)", categorias_iniciales)
 
     conexion.commit()
