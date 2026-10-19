@@ -47,32 +47,32 @@
         </div>
     {% endif %}
 
-    {% for tarea in tareas %}
-        <div class="task-card" style="border-left:8px solid {% if tarea.completada == 1 %}#2ecc71{% elif tarea.prioridad == 3 %}#e74c3c{% elif tarea.prioridad == 2 %}#f1c40f{% else %}#3498db{% endif %}; opacity: {% if tarea.completada == 1 %}0.6{% else %}1{% endif %};">
-            <div class="task-info" style=" {% if tarea.completada == 1 %}text-decoration:line-through; color:#777;{% endif %}">
-                <strong style="font-size:18px;">{{ tarea.titulo }}</strong><br>
-                <small style="color:#d4af37;">📅 Vence: {{ tarea.fecha_vencimiento }}</small>
-                {% if tarea.hora %}
-                    <small style="color:#aaa;"> · 🕐 {{ tarea.hora }}</small>
-                {% endif %}
-                {% if tarea.ubicacion %}
-                    <br><small style="color:#aaa;">📍 {{ tarea.ubicacion }}</small>
-                {% endif %}
-                {% if tarea.observaciones %}
-                    <br><small style="color:#aaa;">📝 {{ tarea.observaciones }}</small>
-                {% endif %}
-            </div>
-            <div style="display:flex; gap:15px; align-items:center;">
-                {% if tarea.completada != 1 %}
-                    <a href="/tareas/completar/{{ tarea.id }}" style="color:#2ecc71; font-weight:bold; font-size:14px; text-decoration:none;">Completar</a>
-                {% else %}
-                    <span style="color:#2ecc71; font-weight:bold;">Hecho</span>
-                {% endif %}
-                <a href="/tareas/editar/{{ tarea.id }}" style="color:#f1c40f; font-size:14px; text-decoration:none;">Editar</a>
-                <a href="/tareas/eliminar/{{ tarea.id }}" style="color:#e74c3c; font-size:14px; text-decoration:none;" onclick="return confirm('¿Borrar esta tarea?')">Eliminar</a>
-            </div>
+   {% for tarea in tareas %}
+    <div class="task-card" style="border-left:8px solid {% if tarea.completada == 1 %}#2ecc71{% elif tarea.prioridad == 'Alta' or tarea.prioridad == '3' or tarea.prioridad == 'Urgente' %}#e74c3c{% elif tarea.prioridad == 'Media' or tarea.prioridad == '2' %}#f1c40f{% else %}#3498db{% endif %}; opacity: {% if tarea.completada == 1 %}0.6{% else %}1{% endif %};">
+        <div class="task-info" style=" {% if tarea.completada == 1 %}text-decoration:line-through; color:#777;{% endif %}">
+            <strong style="font-size:18px;">{{ tarea.titulo }}</strong><br>
+            <small style="color:#d4af37;">📅 Vence: {{ tarea.fecha_vencimiento }}</small>
+            {% if tarea.hora %}
+                <small style="color:#aaa;"> · 🕐 {{ tarea.hora }}</small>
+            {% endif %}
+            {% if tarea.ubicacion %}
+                <br><small style="color:#aaa;">📍 {{ tarea.ubicacion }}</small>
+            {% endif %}
+            {% if tarea.observaciones %}
+                <br><small style="color:#aaa;">📝 {{ tarea.observaciones }}</small>
+            {% endif %}
         </div>
-    {% endfor %}
+        <div style="display:flex; gap:15px; align-items:center;">
+            {% if tarea.completada != 1 %}
+                <a href="/tareas/completar/{{ tarea.id }}" style="color:#2ecc71; font-weight:bold; font-size:14px; text-decoration:none;">Completar</a>
+            {% else %}
+                <span style="color:#2ecc71; font-weight:bold;">Hecho</span>
+            {% endif %}
+            <a href="/tareas/editar/{{ tarea.id }}" style="color:#f1c40f; font-size:14px; text-decoration:none;">Editar</a>
+            <a href="/tareas/eliminar/{{ tarea.id }}" style="color:#e74c3c; font-size:14px; text-decoration:none;" onclick="return confirm('¿Borrar esta tarea?')">Eliminar</a>
+        </div>
+    </div>
+{% endfor %}
 </div>
 </body>
 </html>
