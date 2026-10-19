@@ -12,7 +12,6 @@ def index():
 # 2. Vista y lógica de Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -24,15 +23,15 @@ def login():
         cursor.close()
         connection.close()
         
-        # Validación de credenciales
         if usuario and usuario['password'] == password:
             session['usuario_id'] = usuario['id']
             session['nombre'] = usuario['nombre']
             return redirect(url_for('dashboard'))
         else:
-            error = "Correo o contraseña incorrectos."
+            # Retorna una alerta nativa igual que en tu versión de PHP y recarga la página
+            return "<script>alert('Correo o contraseña incorrectos'); window.location.href='/login';</script>"
             
-    return render_template('login.html', error=error)
+    return render_template('login.html')
 
 # 3. Vista y lógica de Registro
 @app.route('/registro', methods=['GET', 'POST'])

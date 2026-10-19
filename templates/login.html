@@ -27,11 +27,6 @@
             <h1>Login</h1>
 
             <!-- 🛑 EL ERROR DEBE QUEDAR AQUÍ, ANTES DEL FORMULARIO O DENTRO DE ÉL -->
-            {% if error %}
-                <div style="background-color: #ffe6e6; color: #d9534f; padding: 10px; border-radius: 5px; margin-bottom: 15px; text-align: center; font-size: 14px;">
-                    {{ error }}
-                </div>
-            {% endif %}
 
             <form action="/login" method="POST">
                 <input type="email" name="email" placeholder="Correo" required>
