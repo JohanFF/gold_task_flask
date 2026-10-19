@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gold Task</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -22,7 +23,6 @@
         </nav>
     </header>
 
-    <!-- Aumentamos el ancho máximo a 950px para hacer las tarjetas más anchas -->
     <main style="max-width: 950px; margin: 40px auto; padding: 0 20px;">
         
         <!-- Tarjeta de bienvenida principal -->
@@ -31,7 +31,7 @@
             <p style="color: #aaa; margin-bottom: 30px; font-size: 15px;">Una herramienta diseñada para que puedas hacer tus tareas diarias.</p>
             
             <div style="display: flex; justify-content: center;">
-                <a href="/login" class="btn-cta btn-custom-hover" style="width: 50%; padding: 14px; font-size: 16px; box-sizing: border-box; text-decoration: none;">Ir a mis tareas</a>
+                <a href="/login" class="btn-cta btn-custom-hover" style="padding: 14px 28px; font-size: 16px; box-sizing: border-box; text-decoration: none;">Ir a mis tareas</a>
             </div>
         </section>
 

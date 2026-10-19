@@ -39,7 +39,6 @@ def crear_base_datos():
             FOREIGN KEY (usuario_id) REFERENCES usuarios (id)
         )
     ''')
-
     # Insertar categorías por defecto si no existen
     cursor.execute("SELECT COUNT(*) FROM categorias")
     if cursor.fetchone()[0] == 0:
