@@ -17,9 +17,10 @@ def login():
         password = request.form['password']
         
         connection = get_connection()
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM usuarios WHERE email = %s", (email,))
-            usuario = cursor.fetchone()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM usuarios WHERE email = ?", (email,))
+        usuario = cursor.fetchone()
+        cursor.close()
         connection.close()
         
         # Validación de credenciales
@@ -42,21 +43,24 @@ def registro():
         
         try:
             connection = get_connection()
-            with connection.cursor() as cursor:
-                # Verificamos si el correo ya está registrado
-                cursor.execute("SELECT id FROM usuarios WHERE email = %s", (email,))
-                existe = cursor.fetchone()
-                
-                if existe:
-                    connection.close()
-                    return "Este correo ya está registrado. <a href='/registro'>Intentar con otro</a>"
-                
-                # Insertamos el nuevo usuario
-                cursor.execute(
-                    "INSERT INTO usuarios (nombre, email, password) VALUES (%s, %s, %s)",
-                    (nombre, email, password)
-                )
-                connection.commit()
+            cursor = connection.cursor()
+            
+            # Verificamos si el correo ya está registrado
+            cursor.execute("SELECT id FROM usuarios WHERE email = ?", (email,))
+            existe = cursor.fetchone()
+            
+            if existe:
+                cursor.close()
+                connection.close()
+                return "Este correo ya está registrado. <a href='/registro'>Intentar con otro</a>"
+            
+            # Insertamos el nuevo usuario
+            cursor.execute(
+                "INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)",
+                (nombre, email, password)
+            )
+            connection.commit()
+            cursor.close()
             connection.close()
             return redirect(url_for('login'))
         except Exception as e:
@@ -74,23 +78,25 @@ def dashboard():
     categoria_filtro = request.args.get('categoria_id', type=int)
     
     connection = get_connection()
-    with connection.cursor() as cursor:
-        # Obtener todas las categorías para los botones de filtro
-        cursor.execute("SELECT * FROM categorias")
-        categorias = cursor.fetchall()
-        
-        # Obtener tareas filtradas por usuario y categoría (si aplica)
-        if categoria_filtro:
-            cursor.execute(
-                "SELECT * FROM tareas WHERE usuario_id = %s AND categoria_id = %s",
-                (usuario_id, categoria_filtro)
-            )
-        else:
-            cursor.execute(
-                "SELECT * FROM tareas WHERE usuario_id = %s",
-                (usuario_id,)
-            )
-        tareas = cursor.fetchall()
+    cursor = connection.cursor()
+    
+    # Obtener todas las categorías para los botones de filtro
+    cursor.execute("SELECT * FROM categorias")
+    categorias = cursor.fetchall()
+    
+    # Obtener tareas filtradas por usuario y categoría (si aplica)
+    if categoria_filtro:
+        cursor.execute(
+            "SELECT * FROM tareas WHERE usuario_id = ? AND categoria_id = ?",
+            (usuario_id, categoria_filtro)
+        )
+    else:
+        cursor.execute(
+            "SELECT * FROM tareas WHERE usuario_id = ?",
+            (usuario_id,)
+        )
+    tareas = cursor.fetchall()
+    cursor.close()
     connection.close()
     
     return render_template('dashboard.html', tareas=tareas, categorias=categorias, categoria_filtro=categoria_filtro)
@@ -112,19 +118,21 @@ def crear_tarea():
         prioridad = request.form['prioridad']
         usuario_id = session['usuario_id']
         
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """INSERT INTO tareas (titulo, categoria_id, fecha_vencimiento, hora, ubicacion, observaciones, prioridad, usuario_id) 
-                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
-                (titulo, categoria_id, fecha_vencimiento, hora, ubicacion, observaciones, prioridad, usuario_id)
-            )
-            connection.commit()
+        cursor = connection.cursor()
+        cursor.execute(
+            """INSERT INTO tareas (titulo, categoria_id, fecha_vencimiento, hora, ubicacion, observaciones, prioridad, usuario_id) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            (titulo, categoria_id, fecha_vencimiento, hora, ubicacion, observaciones, prioridad, usuario_id)
+        )
+        connection.commit()
+        cursor.close()
         connection.close()
         return redirect(url_for('dashboard'))
         
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM categorias")
-        categorias = cursor.fetchall()
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM categorias")
+    categorias = cursor.fetchall()
+    cursor.close()
     connection.close()
     
     return render_template('crear_tarea.html', categorias=categorias)
@@ -136,9 +144,10 @@ def completar_tarea(id):
         return redirect(url_for('login'))
         
     connection = get_connection()
-    with connection.cursor() as cursor:
-        cursor.execute("UPDATE tareas SET completada = 1 WHERE id = %s", (id,))
-        connection.commit()
+    cursor = connection.cursor()
+    cursor.execute("UPDATE tareas SET completada = 1 WHERE id = ?", (id,))
+    connection.commit()
+    cursor.close()
     connection.close()
     return redirect(url_for('dashboard'))
 
@@ -149,9 +158,10 @@ def eliminar_tarea(id):
         return redirect(url_for('login'))
         
     connection = get_connection()
-    with connection.cursor() as cursor:
-        cursor.execute("DELETE FROM tareas WHERE id = %s", (id,))
-        connection.commit()
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM tareas WHERE id = ?", (id,))
+    connection.commit()
+    cursor.close()
     connection.close()
     return redirect(url_for('dashboard'))
 
@@ -172,24 +182,26 @@ def editar_tarea(id):
         observaciones = request.form.get('observaciones') or None
         prioridad = request.form['prioridad']
         
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """UPDATE tareas SET titulo = %s, categoria_id = %s, fecha_vencimiento = %s, 
-                   hora = %s, ubicacion = %s, observaciones = %s, prioridad = %s 
-                   WHERE id = %s""",
-                (titulo, categoria_id, fecha_vencimiento, hora, ubicacion, observaciones, prioridad, id)
-            )
-            connection.commit()
+        cursor = connection.cursor()
+        cursor.execute(
+            """UPDATE tareas SET titulo = ?, categoria_id = ?, fecha_vencimiento = ?, 
+                hora = ?, ubicacion = ?, observaciones = ?, prioridad = ? 
+                WHERE id = ?""",
+            (titulo, categoria_id, fecha_vencimiento, hora, ubicacion, observaciones, prioridad, id)
+        )
+        connection.commit()
+        cursor.close()
         connection.close()
         return redirect(url_for('dashboard'))
         
     # Método GET: Cargar la tarea existente y las categorías
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM tareas WHERE id = %s", (id,))
-        tarea = cursor.fetchone()
-        
-        cursor.execute("SELECT * FROM categorias")
-        categorias = cursor.fetchall()
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM tareas WHERE id = ?", (id,))
+    tarea = cursor.fetchone()
+    
+    cursor.execute("SELECT * FROM categorias")
+    categorias = cursor.fetchall()
+    cursor.close()
     connection.close()
     
     if not tarea:
