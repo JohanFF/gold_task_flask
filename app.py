@@ -12,6 +12,7 @@ def index():
 # 2. Vista y lógica de Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -29,9 +30,9 @@ def login():
             session['nombre'] = usuario['nombre']
             return redirect(url_for('dashboard'))
         else:
-            return "Correo o contraseña incorrectos. <a href='/login'>Volver</a>"
+            error = "Correo o contraseña incorrectos."
             
-    return render_template('login.html')
+    return render_template('login.html', error=error)
 
 # 3. Vista y lógica de Registro
 @app.route('/registro', methods=['GET', 'POST'])
