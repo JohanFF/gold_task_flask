@@ -13,13 +13,11 @@ body {
 
 /* --- encabezado principal */
 .main-header {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 5%;
-    background: #1a1a1a;
-    border-bottom: 2px solid #d4af37;
+    padding: 10px 20px;
+    flex-wrap: nowrap;
 }
 
 /* diseño registro y login */
@@ -41,8 +39,9 @@ main {
 .brand {
     display: flex;
     align-items: center;
+    gap: 10px; /* Espacio limpio entre el logo y el texto Gold Task */
     text-decoration: none;
-    color: #d4af37;
+    white-space: nowrap;
 }
 
 .logo-img {
@@ -54,11 +53,10 @@ main {
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: bold;
-    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
