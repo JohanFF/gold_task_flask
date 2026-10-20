@@ -14,11 +14,11 @@
         </a>
         <nav class="nav-links">
             {% if 'usuario_id' in session %}
-                <a href="/dashboard">Mi Panel</a>
-                <a href="/logout">Salir</a>
+                <a href="/dashboard" class="nav-link-item">Mi Panel</a>
+                <a href="/logout" class="nav-link-item">Salir</a>
             {% else %}
-                <a href="/login">Entrar</a>
-                <a href="/registro">Registrarse</a>
+                <a href="/login" class="nav-link-item">Entrar</a>
+                <a href="/registro" class="nav-link-item">Registrarse</a>
             {% endif %}
         </nav>
     </header>
