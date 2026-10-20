@@ -17,13 +17,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 900px;      /* 👈 Iguala el ancho máximo del contenido principal (main) */
-    margin: 0 auto;        /* 👈 Lo centra perfectamente en la pantalla */
-    padding: 15px 20px;    /* 👈 Espaciado interno equilibrado */
+    width: 100%;
+    padding: 12px 20px;
     background-color: #121212;
-    border-bottom: 2px solid #d4af37; /* Línea dorada */
+    border-bottom: 2px solid #d4af37; /* Línea dorada de extremo a extremo */
     flex-wrap: nowrap;
-
+}
 .brand {
     display: flex;
     align-items: center;
@@ -152,13 +151,13 @@ input, select {
 button, .btn-cta {
     width: 100%;
     padding: 12px;
-    background-color: #d4af37;
+    background-color: #d4af37 !important;
     border: none;
     border-radius: 6px;
-    color: #121212;
+    color: #121212 !important; /* Fuerza el color oscuro para que no se vea morado */
     font-weight: bold;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: none !important;
     display: block;
     text-align: center;
 }
