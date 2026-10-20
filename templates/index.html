@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gold Task</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=4">
 </head>
 <body>
     <header class="main-header">
         <a href="/" class="brand">
             <img src="{{ url_for('static', filename='img/logo.jpeg') }}" class="logo-img" alt="Logo">
-            <h2 style="margin:0; color:#d4af37;">Gold Task</h2>
+            <h2>Gold Task</h2>
         </a>
         <nav class="nav-links">
             {% if 'usuario_id' in session %}
@@ -23,28 +23,26 @@
         </nav>
     </header>
 
-    <main style="max-width: 950px; margin: 40px auto; padding: 0 20px;">
-        
+    <main class="main-container">
         <!-- Tarjeta de bienvenida principal -->
-        <section class="section-card" style="text-align: center; padding: 40px 30px;">
-            <h2 style="font-size: 28px; margin-bottom: 15px; color: #d4af37;">Organiza tus tareas con éxito en Gold Task</h2>
-            <p style="color: #aaa; margin-bottom: 30px; font-size: 15px;">Una herramienta diseñada para que puedas hacer tus tareas diarias.</p>
+        <section class="section-card hero-card">
+            <h1 class="hero-title">Organiza tus tareas con éxito en Gold Task</h1>
+            <p class="hero-subtitle">Una herramienta diseñada para que puedas hacer tus tareas diarias.</p>
             
-            <div style="display: flex; justify-content: center;">
-                <a href="/login" class="btn-cta btn-custom-hover" style="padding: 14px 28px; font-size: 16px; box-sizing: border-box; text-decoration: none;">Ir a mis tareas</a>
+            <div class="cta-wrapper">
+                <a href="/login" class="btn-cta">Comenzar ahora</a>
             </div>
         </section>
 
         <!-- Tarjeta del manual de uso rápido -->
-        <section class="section-card" style="padding: 30px;">
-            <h2 style="margin-bottom: 20px; font-size: 22px; color: #d4af37;">Manual de Uso Rápido</h2>
-            <ol style="color: #ccc; line-height: 2; margin: 0; padding-left: 20px; font-size: 15px;">
+        <section class="section-card">
+            <h2 class="section-title">Manual de Uso Rápido</h2>
+            <ol class="manual-list">
                 <li><strong>Cuenta:</strong> Regístrate e inicia sesión de forma segura.</li>
                 <li><strong>Tareas:</strong> Crea tus tareas asignando prioridad (Baja, Media, Alta).</li>
                 <li><strong>Gestión:</strong> Visualiza tus tareas pendientes en el panel y elimínalos al terminar.</li>
             </ol>
         </section>
-
     </main>
 </body>
 </html>

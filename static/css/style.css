@@ -1,122 +1,103 @@
 * {
     box-sizing: border-box;
-}
-
-/* --- Estilos genéricos --- */
-body {
-    background-color: #121212;
-    color: #e0e0e0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    display: block;
 }
 
-/* --- Encabezado principal (Idéntico a PHP) --- */
+/* --- Estilos base y tipografía global --- */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+/* --- Encabezado principal (Header) --- */
 .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 12px 20px;
+    padding: 16px 24px;
     background-color: #121212;
-    border-bottom: 2px solid #d4af37; /* Línea dorada de extremo a extremo */
-    flex-wrap: nowrap;
+    border-bottom: 2px solid #d4af37;
 }
+
 .brand {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     text-decoration: none;
-    white-space: nowrap;
     color: #d4af37;
 }
 
 .logo-img {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 0;
 }
 
 .brand h2 {
-    font-size: 17px;
-    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
     color: #d4af37;
+    margin: 0;
     transition: color 0.3s ease;
 }
 
 .brand:hover h2 {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
-/* Enlaces de navegación alineados estrictamente en horizontal */
+/* Enlaces del menú (Entrar / Registrarse) */
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     white-space: nowrap;
 }
 
-.nav-links a {
+.nav-links a, .nav-link-item {
     text-decoration: none !important;
-    font-size: 14px !important;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-    font-weight: 500 !important;
-    color: #e0e0e0 !important; /* Color claro unificado para ambos por defecto */
-    transition: color 0.3s ease;
-}
-.nav-links a:hover {
-    color: #d4af37 !important; /* Se vuelven dorados al pasar el cursor */
-}
-/* --- Estilo unificado y forzado para los enlaces del menú --- */
-.nav-link-item {
-    text-decoration: none !important;
-    font-size: 14px !important;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-    font-weight: 400 !important;
-    color: #e0e0e0 !important; /* Color gris claro idéntico para ambos */
-    transition: color 0.3s ease;
+    font-size: 15px !important;
+    font-weight: 700 !important; /* Negrita marcada igual a la versión PHP */
+    color: #ffffff !important;
+    transition: color 0.2s ease;
 }
 
-.nav-link-item:hover {
-    color: #d4af37 !important; /* Se ponen dorados al pasar el mouse */
-}
-/* --- Diseño registro y login --- */
-.flex-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; 
-    width: 100%;
+.nav-links a:hover, .nav-link-item:hover {
+    color: #d4af37 !important;
 }
 
-/* --- Contenedor del manual / Index --- */
-main {
-    display: block; 
+/* --- Contenedor Principal (Index / Manual) --- */
+main, .dashboard-container {
+    display: block;
     max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 .section-card {
     background-color: #1e1e1e;
-    padding: 30px;
+    padding: 35px 30px;
     border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 h1, h2 {
     color: #d4af37;
+    font-weight: 700;
 }
 
-.flex-center {
+/* --- Formularios / Auth (Login - Registro) --- */
+.flex-wrapper, .flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 90vh;
+    min-height: 85vh;
+    width: 100%;
 }
 
 .container {
@@ -125,54 +106,55 @@ h1, h2 {
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     border-top: 4px solid #d4af37;
-    width: 350px;
+    width: 100%;
+    max-width: 380px;
 }
 
-/* --- Diseño de dashboard y tareas --- */
-.dashboard-container {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
-}
-
-.task-card {
-    background: #1e1e1e;
-    border-left: 5px solid #d4af37;
-    padding: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
-    width: 100%;          
-    max-width: 100%;   
-    overflow: hidden;
-}
-
-/* --- Botones e inputs --- */
 input, select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 20px;
     border-radius: 6px;
     border: 1px solid #333;
     background-color: #2c2c2c;
     color: white;
-    box-sizing: border-box;
+    font-size: 14px;
 }
 
+/* --- Botón Principal (CTA) --- */
 button, .btn-cta {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: #d4af37 !important;
     border: none;
-    border-radius: 6px;
-    color: #121212 !important; /* Fuerza el color oscuro para que no se vea morado */
-    font-weight: bold;
+    border-radius: 8px;
+    color: #121212 !important;
+    font-size: 16px;
+    font-weight: 700 !important;
     cursor: pointer;
     text-decoration: none !important;
     display: block;
     text-align: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover, .btn-cta:hover, .btn-custom-hover:hover {
+    background-color: #e5be38 !important;
+    transform: translateY(-1px);
+}
+
+/* --- Tarjetas de Tareas (Dashboard) --- */
+.task-card {
+    background: #1e1e1e;
+    border-left: 5px solid #d4af37;
+    padding: 15px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .task-info {
@@ -181,55 +163,21 @@ button, .btn-cta {
     overflow-wrap: break-word;
 }
 
-.btn-custom-hover {
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
+.border-red { border-left: 5px solid #ff4d4d; }
+.border-yellow { border-left: 5px solid #ffd700; }
+.border-blue { border-left: 5px solid #00bfff; }
 
-.btn-custom-hover:hover {
-    background-color: #ffefc0;
-    transform: translateY(-2px);
-}
-
-.border-red {
-    border-left: 5px solid #ff4d4d;
-}
-.border-yellow {
-    border-left: 5px solid #ffd700;
-}
-.border-blue {
-    border-left: 5px solid #00bfff;
-}
-/* Ajustes generales para pantallas de celulares */
+/* --- Adaptabilidad Móvil Segura --- */
 @media (max-width: 768px) {
-    /* Barra de navegación adaptable */
-    nav, .navbar {
-        flex-direction: column;
-        padding: 10px 15px;
-        text-align: center;
+    .main-header {
+        padding: 12px 16px;
+    }
+    
+    .container {
+        width: 90%;
     }
 
-    /* Contenedores principales ocupando mejor el ancho */
-    .container, .task-card, .card {
-        width: 95% !important;
-        margin: 10px auto !important;
-        padding: 15px !important;
-    }
-
-    /* Tamaños de títulos adaptados para móviles */
     h1 {
         font-size: 24px !important;
     }
-}
-/* Controlar el tamaño del logo para que no se expanda de más */
-.logo-img {
-    width: 40px;       /* O el tamaño pequeño que tenía originalmente */
-    height: 40px;
-    object-fit: cover;
-    border-radius: 50%; /* Si era circular, o quítalo si era cuadrado */
-}
-
-/* O de manera general para cualquier imagen de encabezado o logo */
-header img, .brand img {
-    max-height: 40px;
-    width: auto;
 }
