@@ -214,3 +214,16 @@ button, .btn-cta {
         font-size: 24px !important;
     }
 }
+/* Controlar el tamaño del logo para que no se expanda de más */
+.logo-img {
+    width: 40px;       /* O el tamaño pequeño que tenía originalmente */
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%; /* Si era circular, o quítalo si era cuadrado */
+}
+
+/* O de manera general para cualquier imagen de encabezado o logo */
+header img, .brand img {
+    max-height: 40px;
+    width: auto;
+}
