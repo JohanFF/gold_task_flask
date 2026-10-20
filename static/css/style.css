@@ -15,16 +15,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
-    background-color: #121212; /* O el color de fondo oscuro que utilices */
-    border-bottom: 2px solid #d4af37; /* 👈 ¡Esta es la línea dorada del encabezado! */
+    padding: 10px 15px; /* Reducimos un poco el padding lateral para ganar espacio */
+    background-color: #121212;
+    border-bottom: 2px solid #d4af37;
     flex-wrap: nowrap;
-}/* --- Contenedor de enlaces de navegación en el header --- */
+}
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espacio horizontal entre "Entrar" y "Registrarse" */
-    white-space: nowrap;
+    gap: 12px; /* Espacio moderado entre Entrar y Registrarse */
+    white-space: nowrap; /* Evita que las palabras se bajen */
 }
 /* diseño registro y login */
 .flex-wrapper {
@@ -60,9 +60,9 @@ main {
 
 .nav-links a {
     text-decoration: none;
-    font-size: 14px;
+    font-size: 14px; /* Tamaño de letra controlado para móvil */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 .nav-links a:hover {
     color: #d4af37;
 }
