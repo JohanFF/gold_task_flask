@@ -44,6 +44,9 @@ body {
     border-radius: 50%;
     margin-right: 12px;
     object-fit: cover;
+    background-color: #1a1a1a; /* Color de fondo igual al header para evitar destellos */
+    color: transparent;        /* Oculta el texto alternativo ('alt') mientras carga */
+    text-indent: -9999px;
 }
 .nav-links a, .nav-link-item {
     color: white !important;
